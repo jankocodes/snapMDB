@@ -20,4 +20,6 @@ export class OmdbService {
     const url = `${this.apiUrl}&i=${id}`;
     return this.http.get(url);
   }
+  
+  
 }

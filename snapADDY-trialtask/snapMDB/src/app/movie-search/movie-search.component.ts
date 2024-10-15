@@ -23,7 +23,9 @@ export class MovieSearchComponent {
   constructor(private omdbService: OmdbService) {}
 
   searchMovies() {
+  
     if (this.searchTerm&&this.searchTerm.trim() !== '') {
+      console.log(this.searchTerm)
       this.omdbService.searchMovies(this.searchTerm)
         .subscribe(
           data => {

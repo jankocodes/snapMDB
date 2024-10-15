@@ -4,10 +4,26 @@
 
     <div class="searchHeader">
         <h2>snapMDB Movie Search</h2>
-        <input [(ngModel)]= "searchTerm" placeholder="Enter movie title" />
-        <button (click)="searchMovies()">Search</button>
+
+        <div class="search">
+            <input [(ngModel)]= "searchTerm" placeholder="Enter movie title" (submit)="searchMovies()" />
+            <button (click)="searchMovies()">Search</button>
+        </div>
+        
     </div>
-    
+
+
+
+    @if(selectedMovie){
+        <div >
+          <h3>{{ selectedMovie.Title }} ({{ selectedMovie.Year }})</h3>
+          <p><strong>Director:</strong> {{ selectedMovie.Director }}</p>
+          <p><strong>Plot:</strong> {{ selectedMovie.Plot }}</p>
+          <img [src]="selectedMovie.Poster" alt="{{ selectedMovie.Title }}" />
+        </div>
+               
+    }
+
     <div class="recommandations">
         @if(errorMessage){  
             <p class="error">{{ errorMessage }}</p>
@@ -15,7 +31,8 @@
       
           @if(movies.length > 0){
             @for( movie of movies; track movie.imdbID){ 
-              <app-movie-preview [title]="movie.Title" [yearOfRelease]="movie.Year" [posterSrc]="movie.Poster" ></app-movie-preview>
+              <app-movie-preview [movie]="movie" (click)="getMovieDetails(movie.imdbID)">
+                </app-movie-preview>
             }
             
             
@@ -23,16 +40,9 @@
               <p>No movies found</p>
             }
           }
+        
     
       
   
-    @if(selectedMovie){
-    <div >
-      <h3>{{ selectedMovie.Title }} ({{ selectedMovie.Year }})</h3>
-      <p><strong>Director:</strong> {{ selectedMovie.Director }}</p>
-      <p><strong>Plot:</strong> {{ selectedMovie.Plot }}</p>
-      <img [src]="selectedMovie.Poster" alt="{{ selectedMovie.Title }}" />
-    </div>
-           
-}
+    
 </div>

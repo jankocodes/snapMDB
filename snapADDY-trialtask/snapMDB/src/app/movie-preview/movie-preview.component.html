@@ -1,10 +1,13 @@
-<div class="movieCard">
-  <h2>{{title}}</h2>
-  <img src="{{posterSrc}}" alt="movie poster">
 
-  <div class="subImg">
-    <p>{{yearOfRelease}}</p>
-    <button>Add to Watchlist</button>
-  </div>
+
+    <div class="movieCard" >
+      <h2>{{movie.Title}}</h2>
+      <img ngSrc="{{movie.Poster}}" alt="{{movie.Title}} poster" width="260" height="360" (click)="click()">
+    
+      <div class="subImg">
+        <p>{{movie.Year}}</p>
+        <button (click)="addToWatchList()">Add to Watchlist</button>
+      </div>
+      
+    </div>
   
-</div>
