@@ -15,10 +15,13 @@
 
 
     @if(selectedMovie){
-        <div >
-          <h3>{{ selectedMovie.Title }} ({{ selectedMovie.Year }})</h3>
-          <p><strong>Director:</strong> {{ selectedMovie.Director }}</p>
-          <p><strong>Plot:</strong> {{ selectedMovie.Plot }}</p>
+        <div class="selectedMovie">
+          <div class="movieInfo">
+            <h3>{{ selectedMovie.Title }} ({{ selectedMovie.Year }})</h3>
+            <p><strong>Director:</strong> {{ selectedMovie.Director }}</p>
+            <p><strong>Plot:</strong> {{ selectedMovie.Plot }}</p>
+          </div>
+          
           <img [src]="selectedMovie.Poster" alt="{{ selectedMovie.Title }}" />
         </div>
                

@@ -13,30 +13,16 @@ import { WatchlistService } from '../services/watchlist.service';
 })
 export class MoviePreviewComponent {
   @Input() movie: any= "";
+  @Input() added?: boolean= false
   
-
-  
-  
-   clicked: boolean= false;
-   added: boolean= false;
-
   constructor(private watchListService: WatchlistService){}
-  addToWatchList(): void{
-    if(this.added){
-      this.watchListService.removeFromWatchList(this.movie.imdbID)
-      this.added= false;
-      return
-    }
-    this.watchListService.addToWatchList(this.movie)
-    this.added= true;
-    
+  add(): void{
+    this.watchListService.add(this.movie)
   }
   
-  click(): void{
-    this.clicked= true}
-
-  close():void{
-    this.clicked=false
+  onWatchList(): boolean{
+    return this.watchListService.contains(this.movie)
   }
+
   
 }

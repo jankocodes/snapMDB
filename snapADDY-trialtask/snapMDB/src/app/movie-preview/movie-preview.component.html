@@ -1,12 +1,22 @@
 
 
     <div class="movieCard" >
-      <h2>{{movie.Title}}</h2>
-      <img ngSrc="{{movie.Poster}}" alt="{{movie.Title}} poster" width="260" height="360" (click)="click()">
-    
+      <div class="clickable" >
+        <h2>{{movie.Title}}</h2>
+        <img ngSrc="{{movie.Poster}}" alt="{{movie.Title}} poster" width="260" height="360" >
+      </div>
+      
       <div class="subImg">
         <p>{{movie.Year}}</p>
-        <button (click)="addToWatchList()">Add to Watchlist</button>
+        <button (click)="add()" class="add">
+
+          @if (onWatchList()) {
+            <img  src="assets/icons/added.png" alt="added">
+          }
+          @else {
+            <img  src="assets/icons/add.png" alt="add" >
+          }
+        </button>
       </div>
       
     </div>
